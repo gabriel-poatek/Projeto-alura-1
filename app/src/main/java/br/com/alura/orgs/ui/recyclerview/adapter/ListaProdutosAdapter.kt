@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.orgs.R
 import br.com.alura.orgs.databinding.ProdutoItemBinding
 import br.com.alura.orgs.model.Produto
+import coil.load
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.Locale
@@ -31,6 +32,9 @@ class ListaProdutosAdapter(
             val valor = binding.produtoItemValor
             val valorMoeda: String = formataMoeda(produto.valor)
             valor.text = valorMoeda
+            binding.imageView.load(produto.imagem){
+                fallback(R.drawable.erro)
+            }
         }
 
         private fun formataMoeda(valor: BigDecimal): String {
