@@ -32,9 +32,15 @@ class ListaProdutosAdapter(
             val valor = binding.produtoItemValor
             val valorMoeda: String = formataMoeda(produto.valor)
             valor.text = valorMoeda
-            binding.imageView.load(produto.imagem){
-                fallback(R.drawable.erro)
+
+           val visibilidade = if(produto.imagem != null){
+                View.VISIBLE
+            }else{
+                View.GONE
             }
+
+            binding.imageView.visibility = visibilidade
+
         }
 
         private fun formataMoeda(valor: BigDecimal): String {
