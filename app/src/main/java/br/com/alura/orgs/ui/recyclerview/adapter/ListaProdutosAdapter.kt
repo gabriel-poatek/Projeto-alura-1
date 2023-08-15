@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.orgs.R
 import br.com.alura.orgs.databinding.ProdutoItemBinding
+import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
 import coil.load
 import java.math.BigDecimal
@@ -41,6 +42,8 @@ class ListaProdutosAdapter(
 
             binding.imageView.visibility = visibilidade
 
+            binding.imageView.tentaCarregarImagem(produto.imagem  )
+
         }
 
         private fun formataMoeda(valor: BigDecimal): String {
@@ -68,7 +71,6 @@ class ListaProdutosAdapter(
     fun atualiza(produtos: List<Produto>) {
         this.produtos.clear()
         this.produtos.addAll(produtos)
-        notifyDataSetChanged()
+       notifyDataSetChanged()
     }
-
 }
